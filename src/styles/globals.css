@@ -1,0 +1,250 @@
+/* ─── Tailwind directives ────────────────────────────────────────────────────── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design token CSS variables (PRD §5) ───────────────────────────────────── */
+/* Single source of truth for all colors — components never use raw hex values. */
+:root {
+  --bg:              #0A0A0A;   /* near-black page background */
+  --bg-card:         #141414;   /* slightly lifted surface for cards / rows */
+  --bg-hover:        #1C1C1C;   /* hover state for interactive rows */
+  --text-primary:    #F0EDE8;   /* warm off-white for headings */
+  --text-secondary:  #888880;   /* muted gray for labels and meta */
+  --accent:          #FF3D2E;   /* orange-red — used sparingly */
+  --border:          #2A2A2A;   /* subtle divider lines */
+}
+
+/* ─── Base resets & defaults ─────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Smooth scrolling for anchor nav links (PRD §7) */
+  scroll-behavior: smooth;
+  /* Prevent horizontal overflow from oversized hero text */
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  /* Prevent horizontal overflow globally */
+  overflow-x: hidden;
+  /* Custom cursor — hide default when custom cursor is active */
+  cursor: none;
+}
+
+/* ─── Scroll margin for fixed navbar offset (PRD §7) ────────────────────────── */
+/* All sections receive a top margin so anchored links don't hide behind navbar. */
+section {
+  scroll-margin-top: 72px;
+}
+
+/* ─── Typography utility classes ─────────────────────────────────────────────── */
+.font-display { font-family: 'Bebas Neue', cursive; }
+.font-body    { font-family: 'DM Sans', sans-serif; }
+.font-mono    { font-family: 'JetBrains Mono', monospace; }
+
+/* ─── SVG Grain / Noise overlay (PRD §6.2) ──────────────────────────────────── */
+/* Subtle noise texture rendered as an SVG data-URI, overlaid at 4% opacity.     */
+/* Applied to the Hero section via .grain-overlay class.                          */
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ─── Horizontal marquee animation (PRD §6.2) ───────────────────────────────── */
+/* Text is duplicated in JSX for seamless infinite looping.                       */
+/* Desktop: 40s loop. Mobile: slowed to 60s via .marquee-track--slow.            */
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 40s linear infinite;
+  white-space: nowrap;
+}
+
+/* Mobile — slower scroll per PRD §8 */
+@media (max-width: 639px) {
+  .marquee-track {
+    animation-duration: 60s;
+  }
+}
+
+/* Pause on hover for accessibility */
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ─── Scroll arrow bounce keyframe (PRD §6.2) ───────────────────────────────── */
+@keyframes bounce-y {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+.animate-bounce-y {
+  animation: bounce-y 1.5s ease-in-out infinite;
+}
+
+/* ─── Section divider line scale animation (PRD §6.4) ───────────────────────── */
+/* Used in Projects section — line animates scaleX 0 → 1 from left via JS.       */
+.divider-line {
+  transform-origin: left center;
+}
+
+/* ─── Custom cursor (PRD §7) ─────────────────────────────────────────────────── */
+/* A small dot that follows the mouse. Scales on hover. CSS transform only.       */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 200ms ease, height 200ms ease, opacity 200ms ease;
+  will-change: transform;
+}
+
+.custom-cursor.cursor-hover {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: 1.5px solid var(--accent);
+}
+
+/* ─── Utility: visually hidden (accessibility) ───────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ─── Navbar blur backdrop (PRD §6.1) ───────────────────────────────────────── */
+/* Applied via inline style / JS class toggle — defined here for reference.       */
+.navbar-scrolled {
+  backdrop-filter: blur(12px);
+  background: rgba(10, 10, 10, 0.85);
+}
+
+/* ─── Project row hover accent border (PRD §6.4) ────────────────────────────── */
+/* Left border that animates in via Framer Motion on hover.                       */
+.project-row {
+  position: relative;
+  border-left: 2px solid transparent;
+  transition: background-color 200ms ease, border-color 200ms ease;
+}
+
+.project-row:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--accent);
+}
+
+/* ─── Skill chip hover state (PRD §6.5) ─────────────────────────────────────── */
+.skill-chip {
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  transition: border-color 200ms ease, color 200ms ease;
+  cursor: default;
+}
+
+.skill-chip:hover {
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+/* ─── Contact form field styles (PRD §6.6) ──────────────────────────────────── */
+.form-field {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 12px 0;
+  outline: none;
+  transition: border-color 200ms ease;
+}
+
+.form-field::placeholder {
+  color: var(--text-secondary);
+}
+
+.form-field:focus {
+  border-bottom-color: var(--accent);
+}
+
+/* Remove browser autofill yellow background */
+.form-field:-webkit-autofill,
+.form-field:-webkit-autofill:hover,
+.form-field:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text-primary);
+  -webkit-box-shadow: 0 0 0px 1000px var(--bg) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ─── Mobile menu overlay (PRD §6.1) ────────────────────────────────────────── */
+/* Full-screen dark overlay for mobile hamburger nav.                              */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Reduced motion — disable all transforms globally when user prefers ──────── */
+/* Framer Motion also checks useReducedMotion(), but this CSS fallback ensures     */
+/* non-JS animations (marquee, bounce) also respect the preference.                */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+
+  .animate-bounce-y {
+    animation: none;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
