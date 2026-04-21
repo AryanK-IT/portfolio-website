@@ -36,7 +36,7 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           custom={0}
-          style={shouldReduceMotion ? { transitionDelay: '400ms' } : { transitionDelay: '0ms' }}
+          style={shouldReduceMotion ? {} : { transitionDelay: '400ms' }}
         >
           {hero.label}
         </motion.p>
