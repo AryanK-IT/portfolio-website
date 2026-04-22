@@ -29,6 +29,13 @@ html {
   scroll-behavior: smooth;
   /* Prevent horizontal overflow from oversized hero text */
   overflow-x: hidden;
+  /* Hide scrollbar — webkit */
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE / Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none;                /* Chrome / Safari */
 }
 
 body {
@@ -44,8 +51,17 @@ body {
 
 /* ─── Scroll margin for fixed navbar offset (PRD §7) ────────────────────────── */
 /* All sections receive a top margin so anchored links don't hide behind navbar. */
+/* Background is slightly transparent so the fixed grid canvas bleeds through.   */
 section {
   scroll-margin-top: 72px;
+  position: relative;
+  z-index: 1;
+  background: rgba(10, 10, 10, 0.88);
+}
+
+/* Hero keeps fully transparent bg so grid is bright at the top */
+#hero {
+  background: transparent !important;
 }
 
 /* ─── Typography utility classes ─────────────────────────────────────────────── */
@@ -246,5 +262,16 @@ section {
   * {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Hide custom cursor on touch devices ─────────────────────────────────────── */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+
+  body {
+    cursor: auto !important;
   }
 }

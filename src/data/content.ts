@@ -9,7 +9,6 @@ export const meta = {
   email:            "aryankumar.it04@gmail.com",
   github:           "https://github.com/AryanK-IT",
   linkedin:         "https://www.linkedin.com/in/aryan-kumar-3790232a4/",
-  // Set VITE_FORMSPREE_URL in Vercel dashboard env variables
   formspreeEndpoint: import.meta.env.VITE_FORMSPREE_URL ?? "",
 };
 
@@ -18,13 +17,11 @@ export const hero = {
   label:     "Backend Developer · KIIT University · 2026",
   nameLines: ["ARYAN", "KUMAR."],
   chips:     ["Backend Dev", "ML Explorer", "Builder"],
-  // Duplicated string in JSX for seamless marquee loop
   marquee:   "— Backend Development · REST APIs · Cloud Computing · Machine Learning · Node.js · Python · KIIT University —",
 };
 
 // ─── About section ────────────────────────────────────────────────────────────
 export const about = {
-  // Pull quote rendered in Bebas Neue — final word "think." in accent color
   pullQuote:  ["I build things", "that scale and", "think."],
   accentWord: "think.",
   paragraphs: [
@@ -33,13 +30,10 @@ export const about = {
     "I'm also deeply interested in the intersection of backend engineering and machine learning — having built an AI voice detection system during a 5-day hackathon using Python, deep learning, and signal processing.",
     "I reverse-engineer how things work just to rebuild them better.",
   ],
-  // Stats strip — JetBrains Mono, separated by · in JSX
   stats: ["B.Tech · IT", "KIIT, Bhubaneswar", "2023–2027", "Backend Specialist"],
 };
 
 // ─── Projects ─────────────────────────────────────────────────────────────────
-// Four projects displayed as numbered editorial rows (PRD §6.4).
-// All GitHub links point to profile until individual repo URLs are confirmed.
 export const projects = [
   {
     id:          "01",
@@ -72,8 +66,6 @@ export const projects = [
 ];
 
 // ─── Skills ───────────────────────────────────────────────────────────────────
-// Three columns rendered as chip grids (PRD §6.5).
-// Key = column header, value = array of skill chip labels.
 export const skills: Record<string, string[]> = {
   "Languages": [
     "JavaScript (ES6+)",
@@ -106,7 +98,6 @@ export const contact = {
   ctaLines:    ["LET'S BUILD", "SOMETHING."],
   accentWord:  "SOMETHING.",
   subtext:     "Got a project, an idea, or just want to talk systems and code? I'm always up for it.",
-  // Form field placeholders
   fields: {
     name:    "Name",
     email:   "Email",
@@ -121,7 +112,6 @@ export const footer = {
 };
 
 // ─── Navigation links ─────────────────────────────────────────────────────────
-// href values are section IDs — anchor scroll handled via smooth-scroll CSS.
 export const navLinks = [
   { label: "About",    href: "#about"    },
   { label: "Projects", href: "#projects" },
