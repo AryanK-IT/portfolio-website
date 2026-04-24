@@ -1,12 +1,11 @@
 // ─── src/App.tsx ──────────────────────────────────────────────────────────────
 // Root component. Assembles all sections in order. Mounts the custom cursor.
 // HeroGrid is rendered at root level as a fixed full-page background canvas.
-// Section order: Navbar → Hero → ScrollTheater → About → Projects → Skills → Contact → Footer.
+// Section order: Navbar → Hero → About → Projects → Skills → Contact → Footer.
 
 import { useEffect, useRef, useCallback } from 'react';
 import Navbar        from './components/Navbar';
 import Hero          from './components/Hero';
-import ScrollTheater from './components/ScrollTheater';
 import About         from './components/About';
 import Projects      from './components/Projects';
 import Skills        from './components/Skills';
@@ -84,7 +83,6 @@ export default function App() {
 
       <main style={{ position: 'relative', zIndex: 1 }}>
         <Hero />
-        <ScrollTheater />
         <About />
         <Projects />
         <Skills />

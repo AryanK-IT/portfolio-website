@@ -5,24 +5,24 @@
 
 // ─── Site metadata & social links ────────────────────────────────────────────
 export const meta = {
-  name:             "Aryan Kumar",
-  email:            "aryankumar.it04@gmail.com",
-  github:           "https://github.com/AryanK-IT",
-  linkedin:         "https://www.linkedin.com/in/aryan-kumar-3790232a4/",
+  name: "Aryan Kumar",
+  email: "aryankumar.it04@gmail.com",
+  github: "https://github.com/AryanK-IT",
+  linkedin: "https://www.linkedin.com/in/aryan-kumar-3790232a4/",
   formspreeEndpoint: import.meta.env.VITE_FORMSPREE_URL ?? "",
 };
 
 // ─── Hero section ─────────────────────────────────────────────────────────────
 export const hero = {
-  label:     "Backend Developer · KIIT University · 2026",
+  label: "Backend Developer · KIIT University · 2026",
   nameLines: ["ARYAN", "KUMAR."],
-  chips:     ["Backend Dev", "ML Explorer", "Builder"],
-  marquee:   "— Backend Development · REST APIs · Cloud Computing · Machine Learning · Node.js · Python · KIIT University —",
+  chips: ["Backend Dev", "ML Explorer", "Builder"],
+  marquee: "— Backend Development · REST APIs · Cloud Computing · Machine Learning · Node.js · Python · KIIT University —",
 };
 
 // ─── About section ────────────────────────────────────────────────────────────
 export const about = {
-  pullQuote:  ["I build things", "that scale and", "think."],
+  pullQuote: ["I build things", "that scale and", "think."],
   accentWord: "think.",
   paragraphs: [
     "Hey — I'm Aryan, a backend developer and Information Technology student at KIIT University (graduating 2027).",
@@ -30,77 +30,82 @@ export const about = {
     "I'm also deeply interested in the intersection of backend engineering and machine learning — having built an AI voice detection system during a 5-day hackathon using Python, deep learning, and signal processing.",
     "I reverse-engineer how things work just to rebuild them better.",
   ],
-  stats: ["B.Tech · IT", "KIIT, Bhubaneswar", "2023–2027", "Backend Specialist"],
+  stats: ["B.Tech · IT", "KIIT, Bhubaneswar", "2023-2027", "Backend Specialist"],
 };
 
 // ─── Projects ─────────────────────────────────────────────────────────────────
 export const projects = [
   {
-    id:          "01",
-    title:       "Splitwise Clone",
-    tags:        ["React", "Node.js", "Express", "MongoDB", "JWT"],
+    id: "01",
+    title: "Splitwise Clone",
+    tags: ["React", "Node.js", "Express", "MongoDB", "JWT"],
     description: "Full-stack expense tracker with a debt simplification algorithm, real-time visualization, and JWT-secured multi-user splitting.",
-    link:        "https://github.com/AryanK-IT",
+    link: "https://github.com/AryanK-IT",
   },
   {
-    id:          "02",
-    title:       "AI Voice Detection System",
-    tags:        ["Python", "Deep Learning", "MFCCs", "Signal Processing"],
+    id: "02",
+    title: "AI Voice Detection System",
+    tags: ["Python", "Deep Learning", "MFCCs", "Signal Processing"],
     description: "ML pipeline to detect AI-generated synthetic audio via spectral analysis. Built in a 5-day hackathon with a team of four.",
-    link:        "https://github.com/AryanK-IT",
+    link: "https://github.com/AryanK-IT",
   },
   {
-    id:          "03",
-    title:       "REST API Project",
-    tags:        ["Node.js", "Express.js", "CRUD"],
+    id: "03",
+    title: "REST API Project",
+    tags: ["Node.js", "Express.js", "CRUD"],
     description: "Clean multi-endpoint CRUD API with efficient, secure data handling patterns.",
-    link:        "https://github.com/AryanK-IT",
+    link: "https://github.com/AryanK-IT",
   },
   {
-    id:          "04",
-    title:       "Django Application",
-    tags:        ["Python", "Django", "ORM"],
+    id: "04",
+    title: "Django Application",
+    tags: ["Python", "Django", "ORM"],
     description: "Scalable Django web app demonstrating ORM-based data modelling and full-stack Python development.",
-    link:        "https://github.com/AryanK-IT",
+    link: "https://github.com/AryanK-IT",
   },
 ];
 
 // ─── Skills ───────────────────────────────────────────────────────────────────
-export const skills: Record<string, string[]> = {
+export interface Skill {
+  name: string;
+  link: string;
+}
+
+export const skills: Record<string, Skill[]> = {
   "Languages": [
-    "JavaScript (ES6+)",
-    "Python",
-    "Java",
-    "C",
-    "SQL",
+    { name: "JavaScript (ES6+)", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+    { name: "Python", link: "https://www.python.org" },
+    { name: "Java", link: "https://www.java.com" },
+    { name: "C", link: "https://en.wikipedia.org/wiki/C_(programming_language)" },
+    { name: "SQL", link: "https://www.mysql.com" },
   ],
   "Frameworks & Tools": [
-    "React",
-    "Node.js",
-    "Express.js",
-    "MongoDB",
-    "Django",
-    "Git",
-    "GitHub",
-    "VS Code",
+    { name: "React", link: "https://react.dev" },
+    { name: "Node.js", link: "https://nodejs.org" },
+    { name: "Express.js", link: "https://expressjs.com" },
+    { name: "MongoDB", link: "https://www.mongodb.com" },
+    { name: "Django", link: "https://www.djangoproject.com" },
+    { name: "Git", link: "https://git-scm.com" },
+    { name: "GitHub", link: "https://github.com/AryanK-IT" },
+    { name: "VS Code", link: "https://code.visualstudio.com" },
   ],
   "Architectures": [
-    "RESTful APIs",
-    "Microservices",
-    "CRUD Operations",
-    "JWT Auth",
-    "MVC Pattern",
+    { name: "RESTful APIs", link: "https://restfulapi.net" },
+    { name: "Microservices", link: "https://microservices.io" },
+    { name: "CRUD Operations", link: "https://developer.mozilla.org/en-US/docs/Glossary/CRUD" },
+    { name: "JWT Auth", link: "https://jwt.io" },
+    { name: "MVC Pattern", link: "https://developer.mozilla.org/en-US/docs/Glossary/MVC" },
   ],
 };
 
 // ─── Contact section ──────────────────────────────────────────────────────────
 export const contact = {
-  ctaLines:    ["LET'S BUILD", "SOMETHING."],
-  accentWord:  "SOMETHING.",
-  subtext:     "Got a project, an idea, or just want to talk systems and code? I'm always up for it.",
+  ctaLines: ["LET'S BUILD", "SOMETHING."],
+  accentWord: "SOMETHING.",
+  subtext: "Got a project, an idea, or just want to talk systems and code? I'm always up for it.",
   fields: {
-    name:    "Name",
-    email:   "Email",
+    name: "Name",
+    email: "Email",
     message: "Message",
   },
   submitLabel: "SEND MESSAGE →",
@@ -113,8 +118,8 @@ export const footer = {
 
 // ─── Navigation links ─────────────────────────────────────────────────────────
 export const navLinks = [
-  { label: "About",    href: "#about"    },
+  { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
-  { label: "Skills",   href: "#skills"   },
-  { label: "Contact",  href: "#contact"  },
+  { label: "Skills", href: "#skills" },
+  { label: "Contact", href: "#contact" },
 ];
