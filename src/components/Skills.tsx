@@ -30,7 +30,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="bg-bg px-6 lg:px-12 py-24 lg:py-32"
+      className="bg-bg px-6 lg:px-12 py-16 lg:py-24"
       aria-label="Technical Skills"
     >
       <div className="max-w-[1400px] mx-auto">
@@ -83,14 +83,17 @@ export default function Skills() {
                 role="list"
                 aria-label={`${category} skills`}
               >
-                {chipList.map((chip) => {
+                {chipList.map((skill) => {
                   // Capture current global index before incrementing
                   const chipIndex = globalChipIndex;
                   globalChipIndex += 1;
 
                   return (
-                    <motion.span
-                      key={chip}
+                    <motion.a
+                      key={skill.name}
+                      href={skill.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       role="listitem"
                       // skill-chip class provides border, bg, hover styles from globals.css
                       className="skill-chip px-3 py-1.5 rounded-sm"
@@ -100,8 +103,8 @@ export default function Skills() {
                       // Global stagger: 40ms per chip across all columns (PRD §6.5)
                       custom={chipIndex}
                     >
-                      {chip}
-                    </motion.span>
+                      {skill.name}
+                    </motion.a>
                   );
                 })}
               </div>
@@ -111,7 +114,7 @@ export default function Skills() {
 
         {/* ── Bottom divider ────────────────────────────────────────────────── */}
         <motion.div
-          className="divider-line h-px bg-[color:var(--border)] w-full mt-16 lg:mt-20"
+          className="divider-line h-px bg-[color:var(--border)] w-full mt-10 lg:mt-14"
           variants={shouldReduceMotion ? opacityOnly : lineReveal}
           initial="hidden"
           animate={gridReveal.isInView ? 'visible' : 'hidden'}

@@ -46,9 +46,13 @@ export default function Contact() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Guard: if no endpoint configured, show error
+    // Fallback: if no endpoint configured, open mailto directly
     if (!meta.formspreeEndpoint) {
-      setFormStatus('error');
+      const subject = encodeURIComponent(`Portfolio contact from ${formData.name}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+      );
+      window.open(`mailto:${meta.email}?subject=${subject}&body=${body}`);
       return;
     }
 
@@ -75,7 +79,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="bg-bg px-6 lg:px-12 py-24 lg:py-32"
+      className="bg-bg px-6 lg:px-12 py-16 lg:py-24"
       aria-label="Contact Aryan Kumar"
     >
       <div className="max-w-[1400px] mx-auto">

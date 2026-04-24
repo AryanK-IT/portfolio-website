@@ -168,7 +168,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="bg-bg px-6 lg:px-12 py-24 lg:py-32"
+      className="bg-bg px-6 lg:px-12 py-16 lg:py-24"
       aria-label="Projects"
     >
       <div className="max-w-[1400px] mx-auto">
