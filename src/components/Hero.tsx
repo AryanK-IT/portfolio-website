@@ -100,7 +100,10 @@ export default function Hero() {
         className="marquee-wrapper overflow-hidden border-t border-[color:var(--border)] py-3"
         aria-hidden="true"
       >
-        <div className="marquee-track">
+      <div className="marquee-track">
+          <span className="font-mono text-[11px] tracking-[1.5px] text-[color:var(--text-secondary)] pr-8">
+            {hero.marquee}
+          </span>
           <span className="font-mono text-[11px] tracking-[1.5px] text-[color:var(--text-secondary)] pr-8">
             {hero.marquee}
           </span>

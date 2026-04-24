@@ -122,7 +122,7 @@ export default function Navbar() {
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={menuOpen}
-            className="md:hidden text-[color:var(--text-secondary)] hover:text-[color:var(--text-primary)] transition-colors duration-200 z-[60] relative"
+            className="md:hidden text-[color:var(--text-secondary)] hover:text-[color:var(--text-primary)] transition-colors duration-200 z-[70] relative"
           >
             {/* Show X when open, Menu when closed */}
             {menuOpen
