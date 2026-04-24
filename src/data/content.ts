@@ -9,7 +9,7 @@ export const meta = {
   email: "aryankumar.it04@gmail.com",
   github: "https://github.com/AryanK-IT",
   linkedin: "https://www.linkedin.com/in/aryan-kumar-3790232a4/",
-  formspreeEndpoint: import.meta.env.VITE_FORMSPREE_URL ?? "",
+  formspreeEndpoint: import.meta.env.VITE_FORMSPREE_URL || "https://formspree.io/f/xvzdlpov",
 };
 
 // ─── Hero section ─────────────────────────────────────────────────────────────
