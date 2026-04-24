@@ -194,7 +194,9 @@ section {
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   transition: border-color 200ms ease, color 200ms ease;
-  cursor: default;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .skill-chip:hover {
@@ -240,7 +242,7 @@ section {
   position: fixed;
   inset: 0;
   background: var(--bg);
-  z-index: 50;
+  z-index: 60;
   display: flex;
   flex-direction: column;
   align-items: center;
