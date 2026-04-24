@@ -104,8 +104,6 @@ export default function HeroGrid() {
       const W = canvas.width;
       const H = canvas.height;
 
-      // How far scrolled as fraction of total scrollable height
-      const scrollFraction = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight);
       // Hero: full brightness → rest of page: dim but always visible (floor 0.1)
       const heroFade   = Math.max(0, 1 - (window.scrollY / window.innerHeight) * 1.4);
       const baseAlpha  = Math.max(0.10, heroFade);
