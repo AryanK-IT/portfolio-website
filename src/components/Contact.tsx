@@ -79,7 +79,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="bg-bg px-6 lg:px-12 py-16 lg:py-24"
+      className="px-6 lg:px-12 py-16 lg:py-24"
       aria-label="Contact Aryan Kumar"
     >
       <div className="max-w-[1400px] mx-auto">

@@ -30,7 +30,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="bg-bg px-6 lg:px-12 py-16 lg:py-24"
+      className="px-6 lg:px-12 py-16 lg:py-24"
       aria-label="Technical Skills"
     >
       <div className="max-w-[1400px] mx-auto">

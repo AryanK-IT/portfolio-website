@@ -104,9 +104,9 @@ export default function HeroGrid() {
       const W = canvas.width;
       const H = canvas.height;
 
-      // Hero: full brightness → rest of page: dim but always visible (floor 0.1)
+      // Hero: full brightness → rest of page: dim but always visible
       const heroFade   = Math.max(0, 1 - (window.scrollY / window.innerHeight) * 1.4);
-      const baseAlpha  = Math.max(0.10, heroFade);
+      const baseAlpha  = Math.max(0.35, heroFade);
 
       ctx.clearRect(0, 0, W, H);
 

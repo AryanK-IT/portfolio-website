@@ -18,7 +18,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="grain-overlay relative min-h-screen flex flex-col justify-between overflow-hidden bg-bg"
+      className="grain-overlay relative min-h-screen flex flex-col justify-between overflow-hidden"
       aria-label="Hero — Aryan Kumar introduction"
       style={{ zIndex: 1 }}
     >

@@ -119,7 +119,7 @@ export default function About() {
     return (
       <section
         id="about"
-        className="bg-bg px-6 lg:px-12 py-24 lg:py-32"
+        className="px-6 lg:px-12 py-24 lg:py-32"
         aria-label="About Aryan Kumar"
         style={{ position: 'relative', zIndex: 1 }}
       >
